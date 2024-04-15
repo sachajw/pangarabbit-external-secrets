@@ -41,7 +41,7 @@ namespaceOverride: ""
 
 # -- Additional labels added to all helm chart resources.
 commonLabels: {}
-
+#  argocd.argoproj.io/instance: external-secrets
 # -- If true, external-secrets will perform leader election between instances to ensure no more
 # than one instance of external-secrets operates at a time.
 leaderElect: false
@@ -122,7 +122,8 @@ podAnnotations: {}
 
 podLabels: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
 securityContext:
@@ -136,7 +137,8 @@ securityContext:
   seccompProfile:
     type: RuntimeDefault
 
-resources: {}
+resources:
+  {}
   # requests:
   #   cpu: 10m
   #   memory: 32Mi
@@ -179,7 +181,6 @@ serviceMonitor:
   #   action: replace
 
 metrics:
-
   listen:
     port: 8080
 
@@ -243,7 +244,7 @@ webhook:
   # -- The port the webhook will listen to
   port: 10250
   rbac:
-  # -- Specifies whether role and rolebinding resources should be created.
+    # -- Specifies whether role and rolebinding resources should be created.
     create: true
   serviceAccount:
     # -- Specifies whether a service account should be created.
@@ -298,7 +299,8 @@ webhook:
 
   topologySpreadConstraints: []
 
-  affinity: {}
+  affinity:
+    {}
 
     # -- Pod priority class name.
   priorityClassName: ""
@@ -310,7 +312,6 @@ webhook:
     # maxUnavailable: 1
 
   metrics:
-
     listen:
       port: 8080
 
@@ -324,39 +325,44 @@ webhook:
       # -- Additional service annotations
       annotations: {}
 
-
   readinessProbe:
     # -- Address for readiness probe
     address: ""
     # -- ReadinessProbe port for kubelet
     port: 8081
 
-
     ## -- Extra environment variables to add to container.
-  extraEnv: []
+  extraEnv:
+    []
 
     ## -- Map of extra arguments to pass to container.
-  extraArgs: {}
+  extraArgs:
+    {}
 
     ## -- Extra volumes to pass to pod.
-  extraVolumes: []
+  extraVolumes:
+    []
 
     ## -- Extra volumes to mount to the container.
-  extraVolumeMounts: []
+  extraVolumeMounts:
+    []
 
     # -- Annotations to add to Secret
-  secretAnnotations: {}
+  secretAnnotations:
+    {}
 
     # -- Annotations to add to Deployment
-  deploymentAnnotations: {}
+  deploymentAnnotations:
+    {}
 
     # -- Annotations to add to Pod
   podAnnotations: {}
 
   podLabels: {}
 
-  podSecurityContext: {}
-      # fsGroup: 2000
+  podSecurityContext:
+    {}
+    # fsGroup: 2000
 
   securityContext:
     allowPrivilegeEscalation: false
@@ -369,10 +375,11 @@ webhook:
     seccompProfile:
       type: RuntimeDefault
 
-  resources: {}
-      # requests:
-      #   cpu: 10m
-      #   memory: 32Mi
+  resources:
+    {}
+    # requests:
+    #   cpu: 10m
+    #   memory: 32Mi
 
 certController:
   # -- Specifies whether a certificate controller deployment be created.
@@ -392,7 +399,7 @@ certController:
   nameOverride: ""
   fullnameOverride: ""
   rbac:
-  # -- Specifies whether role and rolebinding resources should be created.
+    # -- Specifies whether role and rolebinding resources should be created.
     create: true
   serviceAccount:
     # -- Specifies whether a service account should be created.
@@ -415,7 +422,8 @@ certController:
   affinity: {}
 
   # -- Run the certController on the host network
-  hostNetwork: false
+  hostNetwork:
+    false
 
     # -- Pod priority class name.
   priorityClassName: ""
@@ -427,7 +435,6 @@ certController:
     # maxUnavailable: 1
 
   metrics:
-
     listen:
       port: 8080
 
@@ -448,28 +455,33 @@ certController:
     port: 8081
 
     ## -- Extra environment variables to add to container.
-  extraEnv: []
+  extraEnv:
+    []
 
     ## -- Map of extra arguments to pass to container.
-  extraArgs: {}
-
+  extraArgs:
+    {}
 
     ## -- Extra volumes to pass to pod.
-  extraVolumes: []
+  extraVolumes:
+    []
 
     ## -- Extra volumes to mount to the container.
-  extraVolumeMounts: []
+  extraVolumeMounts:
+    []
 
     # -- Annotations to add to Deployment
-  deploymentAnnotations: {}
+  deploymentAnnotations:
+    {}
 
     # -- Annotations to add to Pod
   podAnnotations: {}
 
   podLabels: {}
 
-  podSecurityContext: {}
-      # fsGroup: 2000
+  podSecurityContext:
+    {}
+    # fsGroup: 2000
 
   securityContext:
     allowPrivilegeEscalation: false
@@ -482,10 +494,11 @@ certController:
     seccompProfile:
       type: RuntimeDefault
 
-  resources: {}
-      # requests:
-      #   cpu: 10m
-      #   memory: 32Mi
+  resources:
+    {}
+    # requests:
+    #   cpu: 10m
+    #   memory: 32Mi
 
 # -- Specifies `dnsOptions` to deployment
 dnsConfig: {}
